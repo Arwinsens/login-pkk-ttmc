@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Login - Bank BRI</title>
+    <style>
+   /* style.css - dengan peningkatan responsivitas */
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Abu-abu muda */
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px; /* Batasi lebar maksimum agar tetap rapi di layar besar */
+    width: 90%; /* Ambil 90% lebar layar, terutama di perangkat seluler */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #f26522; /* Oranye BRI */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Lebar penuh di perangkat seluler */
+}
+
+.lupa-password {
+    margin-top: 15px;
+}
+
+.lupa-password a {
+    color: #007bff; /* Biru BRI */
+    text-decoration: none;
+}
+
+/* Media query untuk tampilan di layar yang lebih kecil (misalnya, ponsel) */
+@media (max-width: 500px) {
+    .container {
+        padding: 20px; /* Kurangi padding sedikit di layar kecil */
+    }
+
+    .logo img {
+        max-width: 120px; /* Perkecil logo di layar kecil */
+    }
+
+    input[type="text"], input[type="password"] {
+        font-size: 16px; /* Perbesar ukuran font input di layar kecil */
+    }
+}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">
+            <img src="logo-pkk.png" alt="Logo Bank BRI">
+        </div>
+
+        <form action="proses_login.php" method="post"> 
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="lupa-password">
+            <a href="#">Lupa Password?</a>
+        </div>
+    </div>
+
+    <script>
+        const form = document.querySelector('form');
+    
+        // Daftar username, password, dan URL tujuan yang valid
+        const validCredentials = [
+            { username: 'pkkromedan', password: 'pkkromedan', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkmph', password: 'pkkmph', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkismud', password: 'pkkismud', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkktarutung', password: 'pkktarutung', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkksmraja', password: 'pkksmraja', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkthamrin', password: 'pkkthamrin', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkbinjai', password: 'pkkbinjai', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkaiw', password: 'pkkaiw', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkgatsu', password: 'pkkgatsu', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkksibolga', password: 'pkksibolga', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkksiantar', password: 'pkksiantar', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkksibuhuan', password: 'pkksibuhuan', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkgsitoli', password: 'pkkgsitoli', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkkotapinang', password: 'pkkkotapinang', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkbalige', password: 'pkkbalige', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkperdagangan', password: 'pkkperdagangan', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkpsidempuan', password: 'pkkpsidempuan', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkpakam', password: 'pkkpakam', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkkisaran', password: 'pkkkisaran', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkkabanjahe', password: 'pkkkabanjahe', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkparapat', password: 'pkkparapat', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkstabat', password: 'pkkstabat', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'pkkmph', password: 'pkkmph', url: 'https://landingpagepkkmobile.carrd.co/' },
+            { username: 'Tttmc1121', password: 'Tttmc1121', url: 'https://ttmcland.carrd.co/' },
+            // Tambahkan lebih banyak kredensial dengan URL tujuan masing-masing
+        ];
+    
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+    
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+    
+            // Cari kredensial yang cocok dan dapatkan URL tujuan
+            const matchingCredential = validCredentials.find(credential => 
+                credential.username === username && credential.password === password
+            );
+    
+            if (matchingCredential) {
+                window.location.href = matchingCredential.url; // Arahkan ke URL yang sesuai
+            } else {
+                alert('Username atau password tidak sesuai');
+                location.reload();
+            }
+        });
+    </script>
+
+</body>
+</html>
